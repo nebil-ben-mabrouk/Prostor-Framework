@@ -1,4 +1,4 @@
-# Prostor-Framework
+# Prostor Framework
 
 Contact: Nebil BEN MABROUK (nebil.benmabrouk@gmail.com)
 
@@ -42,19 +42,21 @@ git clone git://github.com/nebil-ben-mabrouk/prostor-framework.git
 ```
 To install Prostor, two folders named 'master' and 'slave' are provided; All the elements required for the installation exist in these folders;
 
-- The folder 'master' is to be copied in the  *prostor-master* host; In our case, we choose the directory '/opt/prostor/master'
-- The folder 'slave' is to be copied in the *prostor-slave* host; In our case, we choose the directory '/opt/prostor/slave'
--  The whole installation is to be launched using the script 'prostor-wrapper.sh'.
-	- The installation on *prostor-slave* is performed remotely using the command: 
+- The folder 'master' is to be copied in the host *prostor-master*. In our case, we choose the directory '/opt/prostor/master'
+- The folder 'slave' is to be copied in the host *prostor-slave*. In our case, we choose the directory '/opt/prostor/slave'
+- The whole installation is to be launched using the script 'prostor-wrapper.sh'.
+	- The installation on *prostor-slave* is performed remotely (from the host *prostor-master*) using Docker commands in the form: 
 	``` DOCKER_API_VERSION=1.23 docker -H=prostor-slave:2375```  *append-docker-cmd*
-	- Please check/configure the version and the port of Docker on *prostor-slave*, otherwise the installation on *prostor-slave* can be performed locally using the scripts 'slave-build-images-locally.sh' and 'slave-run-containers-locally.sh'. Both scripts are in the folder '/opt/prostor/slave' copied in *prostor-slave*.
+	- The installation on *prostor-slave*  runs the scripts '/opt/prostor/master/slave-build-images.sh' and '/opt/prostor/master/slave-run-containers.sh'.
+	- In the above scripts, please check and configure the version and the port of Docker (installed on *prostor-slave*). 
+	- If any problems occur, the installation on *prostor-slave* can be performed locally (from the host *prostor-slave*) by running the scripts 'slave-build-images-locally.sh' and 'slave-run-containers-locally.sh'. Both scripts are in the folder '/opt/prostor/slave' already copied in *prostor-slave*.
 	
 #### Check the installation
 - Check runnig containers on both hosts (*prostor-master* and *prostor-slave*)
 - In *prostor-master* five containers should be running (prostor\_zookeeper, prostor\_nimbus, prostor\_ui, prostor\_supervisor, prostor\_client)
 - In *prostor-slave*  the container prostor\_slave\_supervisor should be running
 - In a web browser, access Storm UI via the address: http://*prostor-master*:8889
-	-  Check whether Nimbus is running with the address *prostor-master*
+	- In this interface, check whether Nimbus is running with the address *prostor-master*
 	- Check that two Storm workers (with the addresses *prostor-master* and *prostor-slave*) are running
 - The ports used by containers running on *prostor-master*:
 
