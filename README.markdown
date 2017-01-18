@@ -52,7 +52,7 @@ To install Prostor, two folders named 'master' and 'slave' are provided; All the
 	- If any problems occur, the installation on *prostor-slave* can be performed locally (from the host *prostor-slave*) by running the scripts 'slave-build-images-locally.sh' and 'slave-run-containers-locally.sh'. Both scripts are in the folder '/opt/prostor/slave' already copied in *prostor-slave*.
 	
 #### Checking the installation
-- Check runnig containers on both hosts (*prostor-master* and *prostor-slave*)
+- Check runnig containers on both hosts (*prostor-master* and *prostor-slave*) 
 - In *prostor-master* five containers should be running (prostor\_zookeeper, prostor\_nimbus, prostor\_ui, prostor\_supervisor, prostor\_client)
 - In *prostor-slave*  the container prostor\_slave\_supervisor should be running
 - In a web browser, access Storm UI via the address: http://*prostor-master*:8889
