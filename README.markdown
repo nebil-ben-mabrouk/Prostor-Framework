@@ -4,7 +4,7 @@ Contact: Nebil BEN MABROUK (nebil.benmabrouk@gmail.com)
 
 ## Introduction
 
-Prostor is a location-aware distributed dataflow computation system that it is based on [Apache Storm](http://storm.apache.org/). Prostor makes it easy to process unbounded streams of data, while deploying computations on specific locations defined by developers (instead of the dynamic scheduling proposed by Apache Storm) . 
+Prostor is a location-aware distributed dataflow computation system that it is based on [Apache Storm](http://storm.apache.org/). Prostor makes it easy to process unbounded streams of data, while deploying computations on specific locations defined by developers (instead of the dynamic scheduling proposed by Apache Storm). 
 
 Prostor presents the following features:
 
@@ -13,13 +13,13 @@ Prostor presents the following features:
 - The location-aware scheduler embeds a REST server and supports synchronous communication with Storm topologies (i.e., dataflows) at run-time;
 - Prostor implements custom stream groupings ([Prostor-Stream-Groupings](https://github.com/nebil-ben-mabrouk/Prostor-Stream-Groupings)), which promote (i) local streaming (between component instances running on the same hosts) and (ii) location-aware streaming (between components that run on specific hosts defined by the developer);
 - Prostor is a virtualized framework (thanks to Docker), i.e., all Prostor components run within docker containers;
-- Prostor implements a Storm worker that is able to run on limited-resource devices (notably raspberry pi).
+- Prostor implements a Storm worker that is able to run on limited-resource devices (notably on raspberry pi).
 
 ## Prostor Components
 In this repository, we provide a version of Prostor to be installed on a cluster of two machines:
 
-1.  A commodity computer (we call it *prostor-master*),  which hosts the follwing components:
-	- Zookeeper (coordination server)
+1.  A commodity computer (we call it *prostor-master*),  which hosts the following components:
+	- ZooKeeper (Coordination server)
 	- Nimbus (Storm master)
 	- Supervisor (Storm worker)
 	- UI (Storm user interface)
@@ -51,7 +51,7 @@ To install Prostor, two folders named 'master' and 'slave' are provided; All the
 	- In the above scripts, please check and configure the version and the port of Docker (installed on *prostor-slave*). 
 	- If any problems occur, the installation on *prostor-slave* can be performed locally (from the host *prostor-slave*) by running the scripts 'slave-build-images-locally.sh' and 'slave-run-containers-locally.sh'. Both scripts are in the folder '/opt/prostor/slave' already copied in *prostor-slave*.
 	
-#### Check the installation
+#### Checking the installation
 - Check runnig containers on both hosts (*prostor-master* and *prostor-slave*)
 - In *prostor-master* five containers should be running (prostor\_zookeeper, prostor\_nimbus, prostor\_ui, prostor\_supervisor, prostor\_client)
 - In *prostor-slave*  the container prostor\_slave\_supervisor should be running
