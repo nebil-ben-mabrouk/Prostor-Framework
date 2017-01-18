@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  zookeeper:
+    image: prostor.zookeeper:3.5.2-alpha
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    container_name: prostor_zookeeper
+    network_mode: "host"
+
+  nimbus:
+    build: storm/nimbus
+    image: prostor.storm.nimbus:1.0.2
+    ports:
+      - "3773:3773"
+      - "3772:3772"
+      - "6627:6627"
+    container_name: prostor_nimbus
+    network_mode: "host"        
+
+  client:
+    build: storm/client
+    image: prostor.storm.client:1.0.2
+    container_name: prostor_client
+    network_mode: "host"
+
+  ui:
+    build: storm/ui
+    image: prostor.storm.ui:1.0.2
+    ports:
+      - "8889:8889"
+    container_name: prostor_ui
+    network_mode: "host"
+
+  supervisor:
+    build: storm/supervisor
+    image: prostor.storm.supervisor:1.0.2
+    ports:
+      - "8000"
+      - "6700"
+      - "6701"
+      - "6702"
+      - "6703"
+    container_name: prostor_supervisor
+    network_mode: "host"

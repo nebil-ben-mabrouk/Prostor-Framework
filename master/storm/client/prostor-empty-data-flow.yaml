@@ -1,0 +1,29 @@
+name: "prostor-empty-data-flow"
+
+spouts:
+  - id: "Source"
+    className: "orange.labs.srol.fog.prostor.dataflow.topology.Source"
+    parallelism: 2
+
+bolts:
+  - id: "ProcessingComponent"
+    className: "orange.labs.srol.fog.prostor.dataflow.topology.ProcessingComponent"
+    parallelism: 2
+
+
+streams:
+  - name: "Source --> ProcessingComponent"
+    from: "Source"
+    to: "ProcessingComponent"
+    grouping: 
+      streamId: "rawDataStream"          
+      type: CUSTOM
+      customClass:
+        className: "orange.labs.srol.fog.iot.dataflow.groupings.LocationAwareGrouping"
+        constructorArgs:
+          - ["prostor-slave->prostor-master","prostor-master->prostor-master"]
+    
+config:
+  topology.workers: 2
+  Source: "prostor-master_prostor-slave"
+  ProcessingComponent: "prostor-master_prostor-slave"
