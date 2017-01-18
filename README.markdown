@@ -8,12 +8,12 @@ Prostor is a location-aware distributed dataflow computation system that it is b
 
 Prostor presents the following features:
 
-- It is based on Apache Storm and accordingly inherents all its features;
-- It comprehends a custom location-aware scheduling module ([Prostor-Scheduler](https://github.com/nebil-ben-mabrouk/Prostor-Scheduler)), which enables deploying each component instance (of a Storm topology) on supervisor hosts specified by the developer;
-- It implements custom stream groupings ([Prostor-Stream-Groupings](https://github.com/nebil-ben-mabrouk/Prostor-Stream-Groupings)), which promote local communication (between component instances running on the same hosts) and specific communication (between components that run on specific machines);
-- It supports REST servers embedded within Storm topologies, thus allowing synchronous communication with dataflows;
-- Prostor is a virtual framework (thanks to Docker technologies), i.e., all Prostor components run within docker containers;
-- Prostor provides Storm docker images (notably a Storm supervisor image) that are able to run on limited-resource devices (notably raspberry pi).
+- It is based on Apache Storm and accordingly supports all Storm features;
+- It comprehends a custom location-aware scheduler ([Prostor-Scheduler](https://github.com/nebil-ben-mabrouk/Prostor-Scheduler)), which enables deploying each component instance (of a Storm topology) on supervisor hosts specified by the developer;
+- The location-aware scheduler embeds a REST server and supports synchronous communication with Storm topologies (i.e., dataflows) at run-time;
+- Prostor implements custom stream groupings ([Prostor-Stream-Groupings](https://github.com/nebil-ben-mabrouk/Prostor-Stream-Groupings)), which promote (i) local streaming (between component instances running on the same hosts) and (ii) location-aware streaming (between components that run on specific hosts defined by the developer);
+- Prostor is a virtualized framework (thanks to Docker), i.e., all Prostor components run within docker containers;
+- Prostor implements a Storm worker that is able to run on limited-resource devices (notably raspberry pi).
 
 ## Prostor Components
 In this repository, we provide a version of Prostor to be installed on a cluster of two machines:
@@ -27,7 +27,7 @@ In this repository, we provide a version of Prostor to be installed on a cluster
 2.   A raspberry pi (we call it *prostor-slave*), which hosts the follwing components:
 	- Supervisor (Storm worker)
 
-The above cluster allows running Storm topologies distributed over both hosts.
+The goal is to run Storm topologies distributed over both hosts.
 
 ## Pre-requisites
 Installing Prostor requires:
