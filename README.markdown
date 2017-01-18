@@ -38,7 +38,7 @@ Installing Prostor requires:
 
 ## Installation
 ```
-git clone git://github.com/nebil-ben-mabrouk/prostor-framework.git
+git clone git://github.com/nebil-ben-mabrouk/Prostor-Framework.git 
 ```
 To install Prostor, two folders named 'master' and 'slave' are provided; All the elements required for the installation exist in these folders;
 
