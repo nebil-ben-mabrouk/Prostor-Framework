@@ -1,0 +1,22 @@
+storm.zookeeper.servers:
+    - "prostor-master"
+
+nimbus.seed: ["prostor-master"]
+drpc.servers:
+  - "prostor-master"
+
+ui.port: 8889
+storm.exhibitor.port: 8889
+
+worker.childopts: "-Xmx1024m"
+logviewer.childopts: "-Xmx512m"
+topology.max.spout.pending: 100
+topology.message.timeout.secs: 10
+nimbus.thrift.threads: 32
+supervisor.slots.ports: 
+   - 6700
+   - 6701
+   - 6702
+   - 6703
+
+
